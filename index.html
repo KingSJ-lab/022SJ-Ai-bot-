@@ -107,7 +107,7 @@ placeholder="Ask me anything..."
 // ==========================
 // GEMINI API KEY
 // ==========================
-const API_KEY = "AQ.Ab8RN6K1z7W6vek1PgLl0WfG4QAJKAomt3NR7iEWQBB7tKGuXg";
+const API_KEY = "AQ.Ab8RN6J9GHjmtRCjuXk7tPAEjYccxrqFVZtsFrIFScj_dnYU6A";
  
 // ==========================
 // MEMORY
@@ -153,7 +153,7 @@ text:prompt
 try{
 
 const response = await fetch(
-`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`,
 {
 method:"POST",
 headers:{
