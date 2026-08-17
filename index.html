@@ -128,7 +128,9 @@ const div = document.createElement("div");
 
 div.className = "message " + type;
 
-div.textContent = text;
+div.innerHTML = text
+  .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+  .replace(/\n/g, "<br>");
 
 chat.appendChild(div);
 
@@ -160,7 +162,25 @@ headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
-contents:conversationHistory
+  systemInstruction:{
+    parts:[{
+      text:`You are SJ AI Bot, a helpful, intelligent and professional AI assistant.
+
+Writing style:
+- Give clear, natural and professional answers.
+- Be concise unless the user asks for details.
+- Use headings when useful.
+- Use bullet points and numbered lists when useful.
+- Use **bold** for important words.
+- Explain difficult topics step by step.
+- For simple questions, answer directly in 2–5 sentences.
+- Do not repeat the user's question.
+- Avoid unnecessary repetition.
+- Never invent facts when uncertain.
+- Match the user's level of understanding.`
+    }]
+  },
+  contents:conversationHistory
 })
 }
 );
